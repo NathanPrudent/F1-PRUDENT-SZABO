@@ -1,5 +1,6 @@
 package model
 
+import android.widget.TextView
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.json.*
@@ -11,12 +12,14 @@ import kotlinx.coroutines.*
 import kotlinx.serialization.*
 
 
+@Serializable
+data class ContactResponse(val contacts : List<Contact>)
 
 @Serializable
 data class Contact(val firstName: String, val lastName: String, val numero: String)
 
-fun request(number : Int = 0): Contact = runBlocking{
-
+suspend fun request() : List<Contact>
+{
     val client = HttpClient(CIO) {
         install(JsonFeature) {
             serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
@@ -33,6 +36,8 @@ fun request(number : Int = 0): Contact = runBlocking{
     println(response.readText())
     */
 
-    client.get("https://api.npoint.io/ddab53cb4dd7e8783be0/contacts/$number")
+    val contactResponse: ContactResponse = client.get("https://api.npoint.io/ddab53cb4dd7e8783be0")
+
+    return contactResponse.contacts
 }
 

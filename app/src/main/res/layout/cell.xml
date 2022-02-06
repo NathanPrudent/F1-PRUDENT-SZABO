@@ -7,6 +7,6 @@
     android:padding="16dp"
     android:textAllCaps="true"
     android:textColor="#39FF14"
-    android:textSize="26sp"
+    android:textSize="15sp"
     android:textStyle="bold"
     tools:text="Test" />

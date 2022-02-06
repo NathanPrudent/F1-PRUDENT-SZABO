@@ -27,14 +27,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+
         val frameLayout = FrameLayout(this).apply {
             id = 0x123
         }
         setContentView(frameLayout)
 
-        supportFragmentManager.commit {
-            replace(0x123, FirstFragment())
+        if(supportFragmentManager.fragments.count() == 0) {
+            supportFragmentManager.commit {
+                replace(0x123, FirstFragment())
+            }
         }
 
         /*
