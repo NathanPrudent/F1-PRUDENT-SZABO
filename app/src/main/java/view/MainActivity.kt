@@ -38,37 +38,6 @@ class MainActivity : AppCompatActivity() {
                 replace(0x123, FirstFragment())
             }
         }
-
-        /*
-        val textView: TextView = findViewById(R.id.textView)
-        val button1: Button = findViewById(R.id.button1)
-        val button2: Button = findViewById(R.id.button2)
-        val button3: Button = findViewById(R.id.button3)
-
-        button1.setOnClickListener {
-            val contact: model.Contact = model.request(0)
-
-            println("First name: '${contact.firstName}', last name: '${contact.lastName}', num: '${contact.numero}")
-
-            textView.text = contact.firstName
-        }
-
-        button2.setOnClickListener {
-            val contact: model.Contact = model.request(1)
-
-            println("First name: '${contact.firstName}', last name: '${contact.lastName}', num: '${contact.numero}")
-
-            textView.text = contact.firstName
-        }
-
-        button3.setOnClickListener {
-            val contact: model.Contact = model.request(2)
-
-            println("First name: '${contact.firstName}', last name: '${contact.lastName}', num: '${contact.numero}")
-
-            textView.text = contact.firstName
-        }
-        */
         
     }
 
