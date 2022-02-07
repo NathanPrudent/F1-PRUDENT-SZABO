@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import model.Contact
+import model.Plant
 
 
-class NameAdapter(val nameList: List<Contact>) : RecyclerView.Adapter<Cellule>() {
+class NameAdapter(val nameList: List<Plant>) : RecyclerView.Adapter<Cellule>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Cellule {
 
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
@@ -17,7 +18,7 @@ class NameAdapter(val nameList: List<Contact>) : RecyclerView.Adapter<Cellule>()
     }
 
     override fun onBindViewHolder(cellule: Cellule, position: Int) {
-        cellule.textView.text = nameList[position].firstName + "  " + nameList[position].lastName
+        cellule.textView.text = nameList[position].nom + " : " + nameList[position].description
     }
 
     override fun getItemCount(): Int {

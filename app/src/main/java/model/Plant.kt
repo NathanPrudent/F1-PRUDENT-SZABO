@@ -13,12 +13,12 @@ import kotlinx.serialization.*
 
 
 @Serializable
-data class ContactResponse(val contacts : List<Contact>)
+data class PlantResponse(val plantes : List<Plant>)
 
 @Serializable
-data class Contact(val firstName: String, val lastName: String, val numero: String)
+data class Plant(val nom: String, val description: String, val type: String, val croissance: String, val consommation: String, val image: String)
 
-suspend fun contactsRequest() : List<Contact>
+suspend fun plantsRequest() : List<Plant>
 {
     val client = HttpClient(CIO) {
         install(JsonFeature) {
@@ -28,16 +28,9 @@ suspend fun contactsRequest() : List<Contact>
         }
     }
 
-    /*
-    val response: HttpResponse = client.post("https://api.npoint.io/ddab53cb4dd7e8783be0/contacts") {
-        contentType(ContentType.Application.Json)
-        body = Contact("Nathan", "Prudent", "06")
-    }
-    println(response.readText())
-    */
 
-    val contactResponse: ContactResponse = client.get("https://api.npoint.io/ddab53cb4dd7e8783be0")
+    val plantResponse: PlantResponse = client.get("https://jsonkeeper.com/b/JNCN")
 
-    return contactResponse.contacts
+    return plantResponse.plantes
 }
 
