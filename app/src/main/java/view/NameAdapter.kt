@@ -8,11 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import model.Contact
 import model.Plant
 
 
-class NameAdapter(val nameList: List<Plant>) : RecyclerView.Adapter<Cellule>() {
+interface FirstNameCallBack{
+    fun onNameClicked(indexPlant: Int)
+}
+
+class NameAdapter(val nameList: List<Plant>, val firstNameCallBack: FirstNameCallBack) : RecyclerView.Adapter<Cellule>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Cellule {
 
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
@@ -21,11 +24,12 @@ class NameAdapter(val nameList: List<Plant>) : RecyclerView.Adapter<Cellule>() {
     }
 
     override fun onBindViewHolder(cellule: Cellule, position: Int) {
-        cellule.textView.text = nameList[position].nom + " :\n" + nameList[position].description
+        val namePlant = nameList[position].nom
+        cellule.textView.text = namePlant + " :\n" + nameList[position].description
         cellule.imageView.load(nameList[position].image)
 
-        cellule.buttonDetail.setOnClickListener {
-            println("Button detail click")
+        cellule.buttonDetail.setOnClickListener{
+            firstNameCallBack.onNameClicked(position)
         }
     }
 

@@ -4,22 +4,19 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import coil.imageLoader
-import coil.load
-import coil.request.ImageRequest
-import model.Contact
-import controler.ContactViewModel
 import controler.PlantViewModel
 import model.Plant
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 
 
-class FirstFragment: Fragment(R.layout.fragment_first) {
+class FirstFragment: Fragment(R.layout.fragment_first), FirstNameCallBack {
     val plantViewModel: PlantViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +26,7 @@ class FirstFragment: Fragment(R.layout.fragment_first) {
 
 
         plantViewModel.getPlants().observe(this, Observer<List<Plant>>{ listPlants ->
-            recyclerView.adapter = NameAdapter(listPlants)
+            recyclerView.adapter = NameAdapter(listPlants, this)
         })
 
 
@@ -39,6 +36,10 @@ class FirstFragment: Fragment(R.layout.fragment_first) {
             buttonRequest.setVisibility(View.INVISIBLE);
         }
 
+    }
+
+    override fun onNameClicked(indexPlant: Int){
+        (requireActivity() as MainActivity).goToDetail(indexPlant)
     }
 }
 

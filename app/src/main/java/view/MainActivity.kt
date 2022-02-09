@@ -13,6 +13,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.os.bundleOf
 import java.io.InputStreamReader
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
@@ -21,6 +22,7 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,17 +30,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val frameLayout = FrameLayout(this).apply {
-            id = 0x123
-        }
-        setContentView(frameLayout)
+        setContentView(R.layout.activity_main)
 
         if(supportFragmentManager.fragments.count() == 0) {
             supportFragmentManager.commit {
-                replace(0x123, FirstFragment())
+                replace(R.id.frame_layout, FirstFragment())
             }
         }
         
     }
 
+    fun goToDetail(index: Int){
+        supportFragmentManager.commit {
+            replace(R.id.frame_layout, SecondFragment().apply { arguments = bundleOf("index" to index) })
+        }
+    }
+
+    fun goToListPlant(){
+        supportFragmentManager.commit {
+            replace(R.id.frame_layout, FirstFragment())
+        }
+    }
 }
