@@ -29,7 +29,7 @@ suspend fun plantsRequest() : List<Plant>
     }
 
 
-    val plantResponse: PlantResponse = client.get("https://jsonkeeper.com/b/JNCN")
+    val plantResponse: PlantResponse = client.get("https://jsonkeeper.com/b/RA97")
 
     return plantResponse.plantes
 }
