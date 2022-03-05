@@ -10,14 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import controler.PlantViewModel
-import model.Plant
+import controler.TrialViewModel
+import model.Trial
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 
 
 class FirstFragment: Fragment(R.layout.fragment_first), FirstNameCallBack {
-    val plantViewModel: PlantViewModel by viewModels()
+    val trialViewModel: TrialViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -25,21 +25,21 @@ class FirstFragment: Fragment(R.layout.fragment_first), FirstNameCallBack {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
 
-        plantViewModel.getPlants().observe(this, Observer<List<Plant>>{ listPlants ->
-            recyclerView.adapter = NameAdapter(listPlants, this)
+        trialViewModel.getTrials().observe(this, Observer<List<Trial>>{ listTrials ->
+            recyclerView.adapter = NameAdapter(listTrials, this)
         })
 
 
         val buttonRequest: Button = view.findViewById(R.id.buttonRequest)
         buttonRequest.setOnClickListener {
-            plantViewModel.callPlantsRequest()
+            trialViewModel.callTrialsRequest()
             buttonRequest.setVisibility(View.INVISIBLE);
         }
 
     }
 
-    override fun onNameClicked(indexPlant: Int){
-        (requireActivity() as MainActivity).goToDetail(indexPlant)
+    override fun onNameClicked(indexTrial: Int){
+        (requireActivity() as MainActivity).goToDetail(indexTrial)
     }
 }
 

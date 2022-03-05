@@ -32,12 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        if(supportFragmentManager.fragments.count() == 0) {
-            supportFragmentManager.commit {
-                replace(R.id.frame_layout, FirstFragment())
-            }
-        }
-        
+        goToListTrial()
     }
 
     fun goToDetail(index: Int){
@@ -46,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun goToListPlant(){
+    fun goToListTrial(){
         supportFragmentManager.commit {
             replace(R.id.frame_layout, FirstFragment())
         }

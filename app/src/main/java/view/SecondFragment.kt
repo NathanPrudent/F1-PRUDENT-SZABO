@@ -10,38 +10,37 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import controler.PlantViewModel
-import model.Plant
+import controler.TrialViewModel
+import model.Trial
 
 
 class SecondFragment: Fragment(R.layout.fragment_second) {
-    val plantViewModel: PlantViewModel by viewModels()
+    val trialViewModel: TrialViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val index : Int = arguments!!.getInt("index")
 
-        plantViewModel.callPlantsRequest()
+        trialViewModel.callTrialsRequest()
 
-        plantViewModel.getPlants().observe(this, Observer<List<Plant>>{ listPlants ->
+        trialViewModel.getTrials().observe(this, Observer<List<Trial>>{ listTrials ->
 
-            val namePlant: TextView = view.findViewById(R.id.namePlant)
-            namePlant.text = listPlants[index].nom
+            val nameTrial: TextView = view.findViewById(R.id.nameTrial)
+            nameTrial.text = listTrials[index].nom
 
-            val imagePlant: ImageView = view.findViewById(R.id.imagePlant)
-            imagePlant.load(listPlants[index].image)
+            val imageTrial: ImageView = view.findViewById(R.id.imageTrial)
+            imageTrial.load(listTrials[index].image)
 
-            val descPlant: TextView = view.findViewById(R.id.descPlant)
-            descPlant.text = "Description : " + listPlants[index].description + "\n" +
-                             "Type : " + listPlants[index].type + "\n" +
-                             "Croissance : " + listPlants[index].croissance + "\n" +
-                             "Consommation : " + listPlants[index].consommation + "\n"
+            val descTrial: TextView = view.findViewById(R.id.descTrial)
+            descTrial.text = "Description : " + listTrials[index].description + "\n" +
+                             "Type : " + listTrials[index].type + "\n" +
+                             "Jour : " + listTrials[index].jour + "\n"
         })
 
         val buttonReturn: Button = view.findViewById(R.id.buttonReturn)
         buttonReturn.setOnClickListener {
-            (requireActivity() as MainActivity).goToListPlant()
+            (requireActivity() as MainActivity).goToListTrial()
         }
 
     }
