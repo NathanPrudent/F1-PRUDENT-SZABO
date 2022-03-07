@@ -12,34 +12,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import controler.TrialViewModel
 import model.Trial
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 
 
 class FirstFragment: Fragment(R.layout.fragment_first), FirstNameCallBack {
-    val trialViewModel: TrialViewModel by viewModels()
+
+    var listTrials : List<Trial> = listOf<Trial>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        listTrials = arguments!!.get("list") as List<Trial>
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        recyclerView.adapter = NameAdapter(listTrials, this)
 
-        trialViewModel.getTrials().observe(this, Observer<List<Trial>>{ listTrials ->
-            recyclerView.adapter = NameAdapter(listTrials, this)
-        })
-
-
-        val buttonRequest: Button = view.findViewById(R.id.buttonRequest)
-        buttonRequest.setOnClickListener {
-            trialViewModel.callTrialsRequest()
-            buttonRequest.setVisibility(View.INVISIBLE);
+        val buttonAccueil: Button = view.findViewById(R.id.buttonAccueil)
+        buttonAccueil.setOnClickListener {
+            (requireActivity() as MainActivity).goToIntro(listTrials) // display the introduction fragment
         }
-
     }
 
     override fun onNameClicked(indexTrial: Int){
-        (requireActivity() as MainActivity).goToDetail(indexTrial)
+        (requireActivity() as MainActivity).goToDetail(listTrials, indexTrial)
     }
 }
 

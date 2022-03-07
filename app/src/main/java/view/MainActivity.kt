@@ -23,6 +23,7 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import model.Trial
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,18 +33,28 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        goToListTrial()
-    }
-
-    fun goToDetail(index: Int){
-        supportFragmentManager.commit {
-            replace(R.id.frame_layout, SecondFragment().apply { arguments = bundleOf("index" to index) })
+        if(supportFragmentManager.fragments.count() == 0) {
+            supportFragmentManager.commit {
+                replace(R.id.frame_layout, IntroFragment())
+            }
         }
     }
 
-    fun goToListTrial(){
+    fun goToIntro(listTrials : List<Trial>){
         supportFragmentManager.commit {
-            replace(R.id.frame_layout, FirstFragment())
+            replace(R.id.frame_layout, IntroFragment().apply { arguments = bundleOf("list" to listTrials) })
+        }
+    }
+
+    fun goToListTrial(listTrials : List<Trial>){
+        supportFragmentManager.commit {
+            replace(R.id.frame_layout, FirstFragment().apply { arguments = bundleOf("list" to listTrials) })
+        }
+    }
+
+    fun goToDetail(listTrials : List<Trial>, index: Int){
+        supportFragmentManager.commit {
+            replace(R.id.frame_layout, SecondFragment().apply { arguments = bundleOf("list" to listTrials, "index" to index) })
         }
     }
 }
