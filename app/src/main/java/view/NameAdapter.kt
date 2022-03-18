@@ -25,7 +25,7 @@ class NameAdapter(val trialList: List<Trial>, val firstNameCallBack: FirstNameCa
 
     override fun onBindViewHolder(cellule: Cellule, position: Int) {
         val nameTrial = trialList[position].nom
-        cellule.textView.text = nameTrial + " :\n" + trialList[position].description
+        cellule.textView.text = nameTrial
         cellule.imageView.load(trialList[position].image)
 
         cellule.buttonDetail.setOnClickListener{

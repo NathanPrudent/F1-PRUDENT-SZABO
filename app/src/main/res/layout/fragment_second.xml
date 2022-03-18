@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/nameTrial"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="top|center_horizontal"
@@ -23,14 +23,13 @@
 
     <ImageView
         android:id="@+id/imageTrial"
-        android:layout_width="238dp"
-        android:layout_height="192dp"
+        android:layout_width="275dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintTop_toBottomOf="@id/nameTrial"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/descTrial"

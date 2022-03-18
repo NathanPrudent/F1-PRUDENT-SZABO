@@ -23,6 +23,7 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import model.Trial
 
 
@@ -38,6 +39,23 @@ class MainActivity : AppCompatActivity() {
                 replace(R.id.frame_layout, IntroFragment())
             }
         }
+
+        /*
+        val navigationView = findViewById<BottomNavigationView>(R.id.navigation_view)
+        navigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.accueil -> {
+                    goToIntro(FirstFragment().listTrials)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.list_trial -> {
+                    goToListTrial(IntroFragment().listTrial)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> false
+            }
+        }
+        */
     }
 
     fun goToIntro(listTrials : List<Trial>){

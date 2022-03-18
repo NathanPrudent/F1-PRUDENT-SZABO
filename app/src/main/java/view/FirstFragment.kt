@@ -21,7 +21,7 @@ class FirstFragment: Fragment(R.layout.fragment_first), FirstNameCallBack {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listTrials = arguments!!.get("list") as List<Trial>
+        listTrials = requireArguments().get("list") as List<Trial>
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

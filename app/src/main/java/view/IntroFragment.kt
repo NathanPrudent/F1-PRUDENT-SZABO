@@ -40,7 +40,7 @@ class IntroFragment: Fragment(R.layout.fragment_intro) {
         }
         else
         {
-            listTrial = arguments!!.get("list") as List<Trial>
+            listTrial = requireArguments().get("list") as List<Trial>
         }
 
 
@@ -65,6 +65,7 @@ class IntroFragment: Fragment(R.layout.fragment_intro) {
         }
 
     }
+
 }
 
 
