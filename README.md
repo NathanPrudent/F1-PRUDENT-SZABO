@@ -18,7 +18,7 @@ Elle se décompose en trois fragments contenues dans une activité :
 Permet de récupérer un fichier json en ligne, contenant la liste des épreuves et leurs caractéristiques, à l'aide d'une requête Http, puis d'utiliser les données qu'il contient.
 
 
-**ViewModel and LiveData**  
+**ViewModel et LiveData**  
 Permet de stocker la liste d'épreuves récupérée afin qu'elle ne soit pas perdue lors de l'arrêt de l'activité (rotation de l'appareil par exemple).  
 Permet aussi d'être averti lors de modifications sur les données stockées.
 
