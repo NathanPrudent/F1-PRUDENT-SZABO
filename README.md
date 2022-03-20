@@ -15,7 +15,7 @@ Elle se décompose en trois fragments contenues dans une activité :
 ## Classes et bibliothèques utilisées
 
 **Ktor et Kotlin Serialization**  
-Permet de récupérer un fichier json en ligne, contenant la liste des épreuves et leurs caractéristiques, à l'aide d'une requête Http puis d'utiliser, les données qu'il contient.
+Permet de récupérer un fichier json en ligne, contenant la liste des épreuves et leurs caractéristiques, à l'aide d'une requête Http, puis d'utiliser les données qu'il contient.
 
 
 **ViewModel and LiveData**  
