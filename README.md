@@ -1,6 +1,6 @@
 # Application Décathlon
 
-Projet réalisé avec l'environnement Android Studio à destination des appareils mobiles Android.
+Projet réalisé avec l'environnement Android Studio à destination des appareils mobiles Android.  
 Nous avons utilisé le langage Kotlin pour réaliser l'application.
 
 L'application permet de faire découvrir les épreuves du décathlon, une discipline de l'athlétisme appartenant à la catégorie des épreuves combinées.
