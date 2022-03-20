@@ -6,11 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.*
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import controler.TrialViewModel
 import model.Trial
 
 
@@ -19,9 +15,9 @@ class SecondFragment: Fragment(R.layout.fragment_second) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val index : Int = arguments!!.getInt("index")
+        val index : Int = requireArguments().getInt("index") // get the the index of a trial in the list of trials
 
-        var listTrials = arguments!!.get("list") as List<Trial>
+        var listTrials = requireArguments().get("list") as List<Trial> // get the list of trials in arguments
 
 
         val nameTrial: TextView = view.findViewById(R.id.nameTrial)
@@ -38,7 +34,7 @@ class SecondFragment: Fragment(R.layout.fragment_second) {
 
         val buttonReturn: Button = view.findViewById(R.id.buttonReturn)
         buttonReturn.setOnClickListener {
-            (requireActivity() as MainActivity).goToListTrial(listTrials)
+            (requireActivity() as MainActivity).goToListTrial(listTrials) // display the first fragment
         }
 
     }

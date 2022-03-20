@@ -1,13 +1,11 @@
 package controler
 
-import android.widget.Button
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import model.Trial
 import model.trialsRequest
-import view.R
 
 
 class TrialViewModel : ViewModel() {

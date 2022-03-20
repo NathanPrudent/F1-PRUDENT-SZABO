@@ -5,12 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import controler.TrialViewModel
 import model.Trial
 
@@ -35,14 +31,13 @@ class IntroFragment: Fragment(R.layout.fragment_intro) {
             }
             else
             {
-                listTrial = trialViewModel.getTrials().value!! // get data store in the viewmodel
+                listTrial = trialViewModel.getTrials().value!! // get data store in the ViewModel
             }
         }
         else
         {
-            listTrial = requireArguments().get("list") as List<Trial>
+            listTrial = requireArguments().get("list") as List<Trial> // get the list of trials in arguments
         }
-
 
 
         trialViewModel.getTrials().observe(this, Observer<List<Trial>>{ listTrials ->
